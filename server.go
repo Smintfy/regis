@@ -23,7 +23,7 @@ func main() {
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			fmt.Println("Failed to bind to port: ", PORT)
+			fmt.Println("Error accepting connection: ", err.Error())
 			os.Exit(1)
 		}
 
@@ -40,7 +40,7 @@ func handleConnection(conn net.Conn) {
 		buffer := make([]byte, 1024)
 		n, err := conn.Read(buffer)
 		if err != nil {
-			fmt.Println("Error reading buffer:", err)
+			fmt.Println("Error reading buffer:", err.Error())
 			return
 		}
 
